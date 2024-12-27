@@ -29,30 +29,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h5 class="card-title">Your Mentees</h5>
-                    </div>
-                    <div class="card-body">
-                        {% if mentorship_connections %}
-                            <ul class="list-group">
-                                {% for connection in mentorship_connections %}
-                                    {% if connection.mentor == user %}
-                                        <li class="list-group-item">
-                                            <strong>{{ connection.mentee.username }}</strong>
-                                            <a href="#" class="btn btn-primary btn-sm">View Profile</a>
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        {% else %}
-                            <p class="text-muted">No current mentees.</p>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
         </div>
 
     {% elif user.profile.role == 'mentee' %}
@@ -69,36 +45,12 @@
                                 {% for request in sent_requests %}
                                     <li class="list-group-item">
                                         Request to <strong>{{ request.receiver.username }}</strong>
-                                        - Status: {{ request.get_status_display }}
+                                        - Status: <span class="badge bg-warning text-dark">{{ request.get_status_display }}</span>
                                     </li>
                                 {% endfor %}
                             </ul>
                         {% else %}
                             <p class="text-muted">No mentorship requests sent.</p>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h5 class="card-title">Your Mentor</h5>
-                    </div>
-                    <div class="card-body">
-                        {% if mentorship_connections %}
-                            <ul class="list-group">
-                                {% for connection in mentorship_connections %}
-                                    {% if connection.mentee == user %}
-                                        <li class="list-group-item">
-                                            Mentored by <strong>{{ connection.mentor.username }}</strong>
-                                            <a href="#" class="btn btn-primary btn-sm">View Profile</a>
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        {% else %}
-                            <p class="text-muted">You do not have a mentor yet.</p>
                         {% endif %}
                     </div>
                 </div>
