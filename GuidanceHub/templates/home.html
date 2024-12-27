@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron text-center bg-light p-5">
+    <h1 class="display-4">Welcome to GuidanceHub</h1>
+    <p class="lead">Connect with mentors and mentees to enhance your skills and knowledge.</p>
+    <hr class="my-4">
+    {% if user.is_authenticated %}
+        <a class="btn btn-primary btn-lg" href="{% url 'dashboard' %}" role="button">Go to Dashboard</a>
+    {% else %}
+        <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Get Started</a>
+        <a class="btn btn-outline-primary btn-lg" href="{% url 'login' %}" role="button">Log In</a>
+    {% endif %}
+</div>
+{% endblock %}

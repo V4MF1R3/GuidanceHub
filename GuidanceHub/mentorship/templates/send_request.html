@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Send Mentorship Request</h2>
+
+    <div class="row justify-content-between align-items-center mb-4">
+        <div class="col-md-6">
+            <form method="get" class="d-flex">
+                <input type="text" name="search" value="{{ search_query }}" class="form-control me-2" placeholder="Search mentors by skills or interests...">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for mentor in mentors %}
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ mentor.user.username }}</h5>
+                        <p class="card-text">Skills: {{ mentor.skills }}</p>
+                        <p class="card-text">Interests: {{ mentor.interests }}</p>
+                        <a href="{% url 'mentorship_requests' %}" class="btn btn-primary w-100">Send Request</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-muted col-12 text-center">No mentors found matching your search criteria.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

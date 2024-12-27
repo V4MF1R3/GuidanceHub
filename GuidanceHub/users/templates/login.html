@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card mx-auto" style="max-width: 500px;">
+    <div class="card-body">
+        <h2 class="card-title text-center">Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary w-100 mt-3">Log In</button>
+        </form>
+        <p class="text-center mt-3">
+            Don't have an account? <a href="{% url 'register' %}">Sign up</a>
+        </p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const errors = {{ form.errors.as_json|safe }}; // Safely pass errors to JavaScript
+        if (errors) {
+            Object.keys(errors).forEach(function (field) {
+                const fieldErrors = errors[field];
+                fieldErrors.forEach(function (error) {
+                    alert(field + ": " + error.message); // Display each error
+                });
+            });
+        }
+    });
+</script>
+{% endblock %}

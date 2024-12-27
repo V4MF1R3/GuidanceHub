@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Mentorship Requests</h2>
+    {% for request in received_requests %}
+        <div class="mb-3 p-3 border rounded bg-light">
+            <p>
+                <strong>{{ request.sender.username }}</strong> has sent you a mentorship request.
+                <a href="{% url 'manage_request' request.id 'accept' %}" class="btn btn-success btn-sm">Accept</a>
+                <a href="{% url 'manage_request' request.id 'decline' %}" class="btn btn-danger btn-sm">Decline</a>
+            </p>
+        </div>
+    {% empty %}
+        <p class="text-muted">No pending requests.</p>
+    {% endfor %}
+</div>
+{% endblock %}

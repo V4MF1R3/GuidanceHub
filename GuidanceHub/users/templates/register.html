@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card mx-auto" style="max-width: 500px;">
+    <div class="card-body">
+        <h2 class="card-title text-center">Register</h2>
+        <form method="post" id="registerForm">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary w-100 mt-3">Sign Up</button>
+        </form>
+        <p class="text-center mt-3">
+            Already have an account? <a href="{% url 'login' %}">Log in</a>
+        </p>
+    </div>
+</div>
+
+<script>
+    // Check if errors exist
+    const errors = {{ errors|safe }};  // Pass errors as JSON to JavaScript
+    if (errors) {
+        // Loop through the errors and display as alerts
+        Object.keys(errors).forEach(function(field) {
+            let fieldErrors = errors[field];
+            fieldErrors.forEach(function(error) {
+                alert(field + ": " + error.message); // Display field and error message
+            });
+        });
+    }
+</script>
+{% endblock %}

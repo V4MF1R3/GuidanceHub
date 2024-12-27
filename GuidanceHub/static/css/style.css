@@ -1,0 +1,47 @@
+/* body {
+    background-image: url('/static/images/background.jpg'); /* Replace with your image path */
+    background-size: cover; /* Ensure the image covers the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent tiling */
+    height: 100vh; /* Optional: Ensure it covers the full viewport height */
+    margin: 0; /* Remove default body margin */
+    color: white; /* Ensure text is visible on the background */
+} */
+
+:root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --card-bg-color: #1e1e1e;
+    --card-text-color: #ffffff;
+    --btn-bg-color: #3b82f6;
+    --btn-text-color: #ffffff;
+    --link-color: #90caf9;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.card {
+    background-color: var(--card-bg-color);
+    color: var(--card-text-color);
+}
+
+a {
+    color: var(--link-color);
+}
+
+a:hover {
+    color: var(--text-color);
+}
+
+button, .btn {
+    background-color: var(--btn-bg-color);
+    color: var(--btn-text-color);
+    border: none;
+}
+
+button:hover, .btn:hover {
+    background-color: #2563eb;
+}
